@@ -14,7 +14,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <head>
-        <title>Credit Tracker</title>
+        <title>Reference - Credit Tracker</title>
       </head>
       <body>
         <SessionProvider>

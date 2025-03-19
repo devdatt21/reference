@@ -20,8 +20,8 @@ export default function Navbar() {
         </button>
 
         {/* Center: Logo */}
-        <Link href="/" className="text-xl font-bold">
-          📊 Credit Tracker
+        <Link href="/" className="text-3xl font-serif first-letter:text-red-600 font-bold">
+            Reference.
         </Link>
 
         {/* Right: Profile or Login Button */}
