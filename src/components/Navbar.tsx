@@ -3,7 +3,8 @@
 import { useSession, signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 import { useState } from "react";
-import { FaBars, FaSearch, FaPlus, FaUser, FaInfoCircle, FaSignOutAlt } from "react-icons/fa";
+import {FaHome, FaBars, FaSearch, FaPlus, FaUser, FaInfoCircle, FaSignOutAlt } from "react-icons/fa";
+import Image from "next/image";
 
 export default function Navbar() {
   const { data: session } = useSession();
@@ -26,7 +27,7 @@ export default function Navbar() {
         {/* Right: Profile or Login Button */}
         {session ? (
           <Link href="/dashboard">
-            <img src={session.user?.image || "/default-avatar.png"} alt="Profile" className="w-10 h-10 rounded-full border border-white" />
+            <Image src={session.user?.image || "/default-avatar.png"} alt="Profile" className="w-10 h-10 rounded-full border border-white" />
           </Link>
         ) : (
           <button onClick={() => signIn("google")} className="bg-white text-blue-900 px-4 py-2 rounded-lg font-semibold">
@@ -76,7 +77,31 @@ export default function Navbar() {
             </div>
           </div>
         </div>
+
+        
       )}
+
+      {/* Mobile Bottom Navigation */}
+      {session ? (<div className="md:hidden fixed bottom-0 left-0 w-full bg-blue-900 text-white flex justify-around py-3">
+        <Link href="/" className="flex flex-col items-center">
+          <FaHome className="text-xl" />
+          <span className="text-sm">Home</span>
+        </Link>
+        <Link href="/search" className="flex flex-col items-center">
+          <FaSearch className="text-xl" />
+          <span className="text-sm">Search</span>
+        </Link>
+        <Link href="/create" className="flex flex-col items-center">
+          <FaPlus className="text-xl" />
+          <span className="text-sm">Create</span>
+        </Link>
+        <Link href={session ? "/dashboard" : "/login"} className="flex flex-col items-center">
+          <FaUser className="text-xl" />
+          <Link href="/profile">
+            <Image src={session.user?.image || "/default-avatar.png"} alt="Profile" className="w-10 h-10 rounded-full border border-white" />
+          </Link>
+        </Link>
+      </div>) : ( <div></div> )}
     </>
   );
 }

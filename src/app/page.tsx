@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { FaChartLine, FaHandshake, FaThumbsDown, FaUserFriends } from 'react-icons/fa';
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Navbar from "@/components/Navbar";
 
 
