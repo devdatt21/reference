@@ -27,7 +27,15 @@ export default function Navbar() {
         {/* Right: Profile or Login Button */}
         {session ? (
           <Link href="/dashboard">
-            <Image src={session.user?.image || "/default-avatar.png"} alt="Profile" className="w-10 h-10 rounded-full border border-white" />
+            <Image 
+                src={session.user?.image || "/default-avatar.png"} 
+                alt="Profile" 
+                className="w-10 h-10 rounded-full border border-white" 
+                width={50} 
+                height={50} 
+                unoptimized 
+                />
+
           </Link>
         ) : (
           <button onClick={() => signIn("google")} className="bg-white text-blue-900 px-4 py-2 rounded-lg font-semibold">
@@ -82,26 +90,36 @@ export default function Navbar() {
       )}
 
       {/* Mobile Bottom Navigation */}
-      {session ? (<div className="md:hidden fixed bottom-0 left-0 w-full bg-blue-900 text-white flex justify-around py-3">
-        <Link href="/" className="flex flex-col items-center">
-          <FaHome className="text-xl" />
-          <span className="text-sm">Home</span>
-        </Link>
-        <Link href="/search" className="flex flex-col items-center">
-          <FaSearch className="text-xl" />
-          <span className="text-sm">Search</span>
-        </Link>
-        <Link href="/create" className="flex flex-col items-center">
-          <FaPlus className="text-xl" />
-          <span className="text-sm">Create</span>
-        </Link>
-        <Link href={session ? "/dashboard" : "/login"} className="flex flex-col items-center">
-          <FaUser className="text-xl" />
-          <Link href="/profile">
-            <Image src={session.user?.image || "/default-avatar.png"} alt="Profile" className="w-10 h-10 rounded-full border border-white" />
-          </Link>
-        </Link>
-      </div>) : ( <div></div> )}
+      {session ? (
+        <div className="md:hidden fixed bottom-0 left-0 w-full bg-blue-900 text-white flex justify-around items-center py-3">
+            <Link href="/" className="flex flex-col items-center gap-1">
+            <FaHome className="w-8 h-8" /> {/* Same size as profile image */}
+            <span className="text-sm">Home</span>
+            </Link>
+            <Link href="/search" className="flex flex-col items-center gap-1">
+            <FaSearch className="w-8 h-8" /> {/* Increased size */}
+            <span className="text-sm">Search</span>
+            </Link>
+            <Link href="/create" className="flex flex-col items-center gap-1">
+            <FaPlus className="w-8 h-8" /> {/* Increased size */}
+            <span className="text-sm">Create</span>
+            </Link>
+            <Link href={session ? "/dashboard" : "/login"} className="flex flex-col items-center gap-1">
+            <Image 
+                src={session.user?.image || "/default-avatar.png"} 
+                alt="Profile" 
+                className="w-8 h-8 rounded-full border border-white" 
+                width={32} 
+                height={32} 
+                unoptimized 
+            />
+            <span className="text-sm">Profile</span>
+            </Link>
+        </div>
+        ) : (
+        <div></div>
+        )}
+
     </>
   );
 }

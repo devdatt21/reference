@@ -1,9 +1,9 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const PostSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    ref: "User",
     required: true
   },
   title: {
@@ -15,34 +15,34 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  images: [
+    {
+      type: String // Store image URLs (e.g., from S3, Cloudinary)
+    }
+  ],
   dealType: {
     type: String,
-    enum: ['fair', 'unfair'],
+    enum: ["fair", "unfair"],
     required: true
   },
-  likes: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
-  }],
-  comments: [{
-    user: {
+  likes: [
+    {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-      required: true
-    },
-    text: {
-      type: String,
-      required: true
-    },
-    date: {
-      type: Date,
-      default: Date.now
+      ref: "User"
     }
-  }],
+  ],
+  comments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Comment" // Reference to comment model
+    }
+  ],
   createdAt: {
     type: Date,
     default: Date.now
   }
 });
 
-export default mongoose.models.Post || mongoose.model('Post', PostSchema);
+// Export models
+export default mongoose.models.Post || mongoose.model("Post", PostSchema);
+
