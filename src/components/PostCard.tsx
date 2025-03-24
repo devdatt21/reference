@@ -9,7 +9,6 @@ import {
   Share2, 
   Bookmark, 
   X, 
-  ExternalLink 
 } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";

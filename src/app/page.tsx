@@ -1,6 +1,5 @@
   "use client"; // Required for useSession()
 
-  import Link from 'next/link';
   import { FaChartLine, FaHandshake, FaThumbsDown, FaUserFriends } from 'react-icons/fa';
   import { signIn, useSession } from "next-auth/react";
   import Navbar from "@/components/Navbar";
