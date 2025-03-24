@@ -19,7 +19,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body>
         <SessionProvider>
             {children}
-          
         </SessionProvider> {/* Wrap children inside Providers */}
       </body>
     </html>

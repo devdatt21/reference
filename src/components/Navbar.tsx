@@ -28,7 +28,7 @@ export default function Navbar() {
         {session ? (
           <Link href="/dashboard">
             <Image 
-                src={session.user?.image || "/default-avatar.png"} 
+                src={session.user?.image || ""} 
                 alt="Profile" 
                 className="w-10 h-10 rounded-full border border-white" 
                 width={50} 
@@ -46,7 +46,7 @@ export default function Navbar() {
 
       {/* Sidebar (Only when menuOpen is true) */}
       {menuOpen && (
-        <div className="fixed inset-0   bg-opacity-50 z-50" onClick={() => setMenuOpen(false)}>
+        <div className="fixed inset-0 bg-opacity-50 z-50" onClick={() => setMenuOpen(false)}>
           <div
             className="fixed left-0 top-0 h-full w-64 bg-white text-black shadow-lg p-4 transition-transform transform translate-x-0"
             onClick={(e) => e.stopPropagation()} // Prevents closing when clicking inside
@@ -100,7 +100,7 @@ export default function Navbar() {
             <FaSearch className="w-8 h-8" /> {/* Increased size */}
             <span className="text-sm">Search</span>
             </Link>
-            <Link href="/create" className="flex flex-col items-center gap-1">
+            <Link href="/createpost" className="flex flex-col items-center gap-1">
             <FaPlus className="w-8 h-8" /> {/* Increased size */}
             <span className="text-sm">Create</span>
             </Link>
