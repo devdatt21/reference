@@ -3,7 +3,7 @@
 import { useSession, signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 import { useState } from "react";
-import {FaHome, FaBars, FaSearch, FaPlus, FaUser, FaInfoCircle, FaSignOutAlt } from "react-icons/fa";
+import {FaBars, FaSearch, FaPlus, FaUser, FaInfoCircle, FaSignOutAlt } from "react-icons/fa";
 import Image from "next/image";
 
 export default function Navbar() {
