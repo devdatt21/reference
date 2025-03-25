@@ -27,7 +27,7 @@
 
     // ✅ Otherwise, show the "Login/Features" page
     return (
-      <main className="flex min-h-screen flex-col">
+      <main className="flex min-h-screen flex-col pt-15">
         {/* Hero Section */}
         <section className="bg-gradient-to-r from-blue-400 to-blue-900 text-white py-16 md:py-24">
           <div className="container mx-auto px-4">

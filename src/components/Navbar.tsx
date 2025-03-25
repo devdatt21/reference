@@ -58,19 +58,19 @@ export default function Navbar() {
 
             {/* Sidebar Links */}
             <div className="mt-8 space-y-6">
-              <Link href="/search" className="px-4 py-2 hover:bg-gray-100 flex items-center gap-2">
+              <Link href="/" className="px-4 py-2 hover:bg-gray-100 flex items-center gap-2">
                 <FaSearch /> Search
               </Link>
-              <Link href="/create" className="px-4 py-2 hover:bg-gray-100 flex items-center gap-2">
+              <Link href="/createpost" className="px-4 py-2 hover:bg-gray-100 flex items-center gap-2">
                 <FaPlus /> Create Post
               </Link>
-              <Link href="/about" className="px-4 py-2 hover:bg-gray-100 flex items-center gap-2">
+              <Link href="/" className="px-4 py-2 hover:bg-gray-100 flex items-center gap-2">
                 <FaInfoCircle /> About
               </Link>
 
               {session ? (
                 <>
-                  <Link href="/dashboard" className="px-4 py-2 hover:bg-gray-100 flex items-center gap-2">
+                  <Link href="/" className="px-4 py-2 hover:bg-gray-100 flex items-center gap-2">
                     <FaUser /> Profile
                   </Link>
                   <button onClick={() => signOut()} className="w-full text-left px-4 py-2 hover:bg-gray-100 flex items-center gap-2">
@@ -107,7 +107,7 @@ export default function Navbar() {
             </Link>
             
             <div className="flex items-center space-x-4">
-              <Link href="/search" className="p-2">
+              <Link href="/" className="p-2">
                 <FaSearch className="w-6 h-6" />
               </Link>
               
@@ -116,11 +116,11 @@ export default function Navbar() {
               {session ? (
 
                 <>
-                <Link href="/create" className="p-2">
+                <Link href="/createpost" className="p-2">
                   <FaPlus className="w-6 h-6" />
                 </Link>
               
-                <Link href="/dashboard" className="p-1">
+                <Link href="/" className="p-1">
                   <Image 
                     src={session.user?.image || "/default-avatar.png"} 
                     alt="Profile" 

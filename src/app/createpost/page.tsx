@@ -90,7 +90,7 @@ export default function PostCreatePage() {
     <div className="min-h-screen bg-gray-50 mb-15">
       <Navbar />
 
-      <div className="max-w-4xl mx-auto px-4 py-8">
+      <div className="max-w-4xl mx-auto px-4 py-8 pt-25">
         <div className="bg-white shadow-lg rounded-lg overflow-hidden">
           <div className="bg-gradient-to-r from-blue-600 to-blue-800 p-6">
             <h1 className="text-2xl md:text-3xl font-bold text-white">Create New Post</h1>
