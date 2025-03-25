@@ -9,6 +9,7 @@ import Image from "next/image";
 export default function Navbar() {
   const { data: session } = useSession();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
@@ -90,58 +91,73 @@ export default function Navbar() {
       )}
 
       {/* Mobile Bottom Navigation */}
-      
+      <div className="md:hidden fixed top-0 left-0 w-full z-50">
+      <nav
+        className="flex items-center justify-between px-8 py-4 text-white shadow-lg 
+                   bg-gradient-to-b from-blue-900/80 via-blue-800/40 to-transparent 
+                   backdrop-blur-md"
+      >
+        <Link href="/" className="text-2xl font-serif first-letter:text-red-600 font-bold">
+          Reference.
+        </Link>
 
-      
-          <div className="md:hidden fixed top-0 left-0 w-full z-50">
-          <nav 
-            className="flex items-center justify-between px-8 py-4 text-white shadow-lg 
-                      bg-gradient-to-b from-blue-900/80 via-blue-800/40 to-transparent 
-                      backdrop-blur-md"
-          >
+        <div className="flex items-center space-x-4">
+          <Link href="/" className="p-2">
+            <FaSearch className="w-6 h-6" />
+          </Link>
 
-
-
-            <Link href="/" className="text-2xl font-serif first-letter:text-red-600 font-bold">
-              Reference.
-            </Link>
-            
-            <div className="flex items-center space-x-4">
-              <Link href="/" className="p-2">
-                <FaSearch className="w-6 h-6" />
+          {session ? (
+            <>
+              <Link href="/createpost" className="p-2">
+                <FaPlus className="w-6 h-6" />
               </Link>
-              
-              
-              
-              {session ? (
 
-                <>
-                <Link href="/createpost" className="p-2">
-                  <FaPlus className="w-6 h-6" />
-                </Link>
-              
-                <Link href="/" className="p-1">
-                  <Image 
-                    src={session.user?.image || "/default-avatar.png"} 
-                    alt="Profile" 
-                    className="w-8 h-8 rounded-full border border-white" 
-                    width={32} 
-                    height={32} 
-                    unoptimized 
+              {/* Profile Picture with Clickable Dropdown */}
+              <div className="relative">
+                <button onClick={() => setIsOpen(!isOpen)} className="p-1">
+                  <Image
+                    src={session.user?.image || "/default-avatar.png"}
+                    alt="Profile"
+                    className="w-8 h-8 rounded-full border border-white"
+                    width={32}
+                    height={32}
+                    unoptimized
                   />
-                </Link>
-                </>
-              ) : (
-                <button 
-                  onClick={() => signIn("google")} 
-                  className="bg-white text-blue-900 px-3 py-1 rounded-lg text-sm font-semibold"
-                >
-                  Log in
                 </button>
-              )}
-            </div>
-          </nav>
-          </div>
+
+                {/* Sign Out Modal */}
+                {isOpen && (
+                  <div 
+                    className="absolute right-0 mt-2 w-40 bg-white text-black shadow-md rounded-lg py-2"
+                    onClick={() => setIsOpen(false)} // Close when clicking inside
+                  >
+                    <button
+                      onClick={() => {
+                        signOut();
+                        setIsOpen(false);
+                      }}
+                      className="block w-full text-left px-4 py-2 hover:bg-gray-100"
+                    >
+                      Sign Out
+                    </button>
+                  </div>
+                )}
+              </div>
+            </>
+          ) : (
+            <button
+              onClick={() => signIn("google")}
+              className="bg-white text-blue-900 px-3 py-1 rounded-lg text-sm font-semibold"
+            >
+              Log in
+            </button>
+          )}
+        </div>
+      </nav>
+    </div>
+
+      
+          
         
 
     </>
