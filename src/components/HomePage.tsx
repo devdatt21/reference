@@ -44,7 +44,8 @@ export default function HomePage() {
     : posts.filter(post => post.dealType === filter);
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-15">
+    <div className="min-h-screen bg-gray-50 pt-15 md:pt-0">
+
       <div className="max-w-screen-xl mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2xl md:text-3xl font-bold text-gray-800">Community Deals</h1>
