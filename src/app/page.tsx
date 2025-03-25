@@ -2,7 +2,6 @@
 
   import { FaChartLine, FaHandshake, FaThumbsDown, FaUserFriends } from 'react-icons/fa';
   import { signIn, useSession } from "next-auth/react";
-  import Navbar from "@/components/Navbar";
   import HomePage from "@/components/HomePage"
 
   export default function Home() {
@@ -21,7 +20,6 @@
     if (session) {
       return (
         <main className="flex min-h-screen flex-col">
-          <Navbar />
           <HomePage />
         </main>
       );
@@ -30,7 +28,6 @@
     // ✅ Otherwise, show the "Login/Features" page
     return (
       <main className="flex min-h-screen flex-col">
-        <Navbar />
         {/* Hero Section */}
         <section className="bg-gradient-to-r from-blue-400 to-blue-900 text-white py-16 md:py-24">
           <div className="container mx-auto px-4">

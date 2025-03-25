@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import PostCard from "@/components/PostCard";
 import { Loader2 } from "lucide-react";
-import Navbar from "@/components/Navbar";
 
 interface Post {
   _id: string;
@@ -45,10 +44,8 @@ export default function HomePage() {
     : posts.filter(post => post.dealType === filter);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navbar />
-      
-      <div className="max-w-4xl mx-auto px-4 py-8">
+    <div className="min-h-screen bg-gray-50 pt-15">
+      <div className="max-w-screen-xl mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2xl md:text-3xl font-bold text-gray-800">Community Deals</h1>
           
@@ -100,7 +97,7 @@ export default function HomePage() {
             <p className="text-gray-400 mt-2">Be the first to share a deal!</p>
           </div>
         ) : (
-          <div className="space-y-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {filteredPosts.map((post) => (
               <PostCard key={post._id} post={post} />
             ))}

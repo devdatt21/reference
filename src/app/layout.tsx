@@ -2,8 +2,9 @@
 
 import "./globals.css";
 import { ReactNode } from "react";
-import { SessionProvider } from "next-auth/react";
-
+// import { SessionProvider } from "next-auth/react";
+import Provider from "@/components/provider";
+import Navbar from "@/components/Navbar";
 
 
 interface RootLayoutProps {
@@ -17,9 +18,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <title>Reference - Credit Tracker</title>
       </head>
       <body>
-        <SessionProvider>
+          <Provider>
+            <Navbar />
+
             {children}
-        </SessionProvider> {/* Wrap children inside Providers */}
+          </Provider>
+         {/* Wrap children inside Providers */}
       </body>
     </html>
   );

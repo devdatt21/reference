@@ -90,35 +90,59 @@ export default function Navbar() {
       )}
 
       {/* Mobile Bottom Navigation */}
-      {session ? (
-        <div className="md:hidden fixed bottom-0 left-0 w-full bg-blue-900 text-white flex justify-around items-center py-3">
-            <Link href="/" className="flex flex-col items-center gap-1">
-            <FaHome className="w-8 h-8" /> {/* Same size as profile image */}
-            <span className="text-sm">Home</span>
+      
+
+      
+          <div className="md:hidden fixed top-0 left-0 w-full z-50">
+          <nav 
+            className="flex items-center justify-between px-8 py-4 text-white shadow-lg 
+                      bg-gradient-to-b from-blue-900/80 via-blue-800/40 to-transparent 
+                      backdrop-blur-md"
+          >
+
+
+
+            <Link href="/" className="text-2xl font-serif first-letter:text-red-600 font-bold">
+              Reference.
             </Link>
-            <Link href="/search" className="flex flex-col items-center gap-1">
-            <FaSearch className="w-8 h-8" /> {/* Increased size */}
-            <span className="text-sm">Search</span>
-            </Link>
-            <Link href="/createpost" className="flex flex-col items-center gap-1">
-            <FaPlus className="w-8 h-8" /> {/* Increased size */}
-            <span className="text-sm">Create</span>
-            </Link>
-            <Link href={session ? "/dashboard" : "/login"} className="flex flex-col items-center gap-1">
-            <Image 
-                src={session.user?.image || "/default-avatar.png"} 
-                alt="Profile" 
-                className="w-8 h-8 rounded-full border border-white" 
-                width={32} 
-                height={32} 
-                unoptimized 
-            />
-            <span className="text-sm">Profile</span>
-            </Link>
-        </div>
-        ) : (
-        <div></div>
-        )}
+            
+            <div className="flex items-center space-x-4">
+              <Link href="/search" className="p-2">
+                <FaSearch className="w-6 h-6" />
+              </Link>
+              
+              
+              
+              {session ? (
+
+                <>
+                <Link href="/create" className="p-2">
+                  <FaPlus className="w-6 h-6" />
+                </Link>
+              
+                <Link href="/dashboard" className="p-1">
+                  <Image 
+                    src={session.user?.image || "/default-avatar.png"} 
+                    alt="Profile" 
+                    className="w-8 h-8 rounded-full border border-white" 
+                    width={32} 
+                    height={32} 
+                    unoptimized 
+                  />
+                </Link>
+                </>
+              ) : (
+                <button 
+                  onClick={() => signIn("google")} 
+                  className="bg-white text-blue-900 px-3 py-1 rounded-lg text-sm font-semibold"
+                >
+                  Log in
+                </button>
+              )}
+            </div>
+          </nav>
+          </div>
+        
 
     </>
   );
